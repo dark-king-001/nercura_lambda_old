@@ -1,0 +1,24 @@
+{
+  "name": "nercura_lambda",
+  "version": "1.0.0",
+  "description": "this will our server running on lambda architecture by AWS",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dark-king-001/nercura_lambda.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "blogging"
+  ],
+  "author": "Piyush and Rajat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dark-king-001/nercura_lambda/issues"
+  },
+  "homepage": "https://github.com/dark-king-001/nercura_lambda#readme"
+}
