@@ -22,7 +22,7 @@ app.use(
       secure: false,
     },
     store: MongoStore.create({
-      mongoUrl:  process.env.MongoDB_URL || "mongodb://127.0.0.1:27017/nercura_lambda?retryWrites=true&w=majority", // Adjust to your MongoDB connection string
+      mongoUrl:  process.env.MongoDB_URL || `mongodb://127.0.0.1:27017/${database}?retryWrites=true&w=majority`, // Adjust to your MongoDB connection string
       ttl: 14 * 24 * 60 * 60, // Session TTL in seconds (e.g., 14 days)
     }),
   })
