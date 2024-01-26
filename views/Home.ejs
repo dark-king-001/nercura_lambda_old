@@ -4,8 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Home</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            border-style:solid;
+            border-width: 1px;
+        }
+        nav > div {
+            display: flex;
+            flex-direction: row;
+        }
+        nav > div > img,p {
+            margin: 2em;
+            cursor: pointer;
+        }
+
+        /* Define the keyframes */
+        @keyframes growBorder {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+        }
+
+        nav > div > p:hover {
+            position: relative;
+        }
+
+        nav > div > p:hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #000;
+            animation: growBorder 0.5s forwards;
+        }
+        main {
+            display: flex;
+            flex-direction: row;
+        }
+        main > div {
+            max-width: 12em;
+            padding: 1em 1em;
+            margin: 0em 1em;
+
+            border-style: solid;
+            border-width: 1px;
+            border-radius: 2em 0em;
+
+            transition: transform 0.3s ease;
+        }
+        main > div:hover {
+           transform: translateY(-10px);
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to home page</h1>
+    <nav>
+        <div>
+            <img src="" alt="Website Logo">
+            <p>Blog</p>
+            <p>Features</p>
+            <p>Shop</p>
+            <p>Download</p>
+            <p>About Us</p>
+        </div>
+        <div>
+            <p>X</p>
+            <p>FB</p>
+            <p>Linkdin</p>
+            <p>Gmail</p>
+        </div>
+    </nav>
+    <h1>Think Hard to work</h1>
+    <main>
+        <div>
+            <h2>This is the card Header</h2>
+            <h4>this is card body. its considered big if i say so myself</h4>
+            <p>the day card was posted</p>
+        </div>
+        <div>
+            <h2>This is the card Header</h2>
+            <h4>this is card body. its considered big if i say so myself</h4>
+            <p>the day card was posted</p>
+        </div>
+        <div>
+            <h2>This is the card Header</h2>
+            <h4>this is card body. its considered big if i say so myself</h4>
+            <p>the day card was posted</p>
+        </div>
+        <div>
+            <h2>This is the card Header</h2>
+            <h4>this is card body. its considered big if i say so myself</h4>
+            <p>the day card was posted</p>
+        </div>
+        <div>
+            <h2>This is the card Header</h2>
+            <h4>this is card body. its considered big if i say so myself</h4>
+            <p>the day card was posted</p>
+        </div>
+        <div>
+            <h2>This is the card Header</h2>
+            <h4>this is card body. its considered big if i say so myself</h4>
+            <p>the day card was posted</p>
+        </div>
+    </main>
 </body>
-</html>l
+</html>
