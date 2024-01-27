@@ -59,19 +59,54 @@
             display: flex;
             flex-direction: row;
         }
-        main > div {
-            max-width: 12em;
-            padding: 1em 1em;
-            margin: 0em 1em;
 
+        .blogs {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .blogs > div {
+            max-width: 12em;
+            padding: 1em;
+            margin: 1em;
             border-style: solid;
             border-width: 1px;
             border-radius: 2em 0em;
-
-            transition: transform 0.3s ease;
         }
-        main > div:hover {
-           transform: translateY(-10px);
+
+        @keyframes hoverUpDown {
+            0% {
+                transform: translateY(0); /* Initial position */
+            }
+            100% {
+                transform: translateY(-20px); /* Hovered position */
+            }
+        }
+
+        .blogs > div:hover {
+            position: relative;
+        }
+
+        .blogs > div:hover {
+            animation: hoverUpDown 0.8s infinite alternate; /* Define the animation */
+        }
+
+        .blogs > section {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .side_content {
+            display: flex;
+            flex-grow: 1;
+            flex-basis: 80%;
+            padding: 1em;
+            margin: 1em;
+
+            border: solid 1px;
+
+            border-radius: 1em 0em;
         }
     </style>
 </head>
@@ -94,36 +129,51 @@
     </nav>
     <h1>Think Hard to work</h1>
     <main>
-        <div>
-            <h2>This is the card Header</h2>
-            <h4>this is card body. its considered big if i say so myself</h4>
-            <p>the day card was posted</p>
-        </div>
-        <div>
-            <h2>This is the card Header</h2>
-            <h4>this is card body. its considered big if i say so myself</h4>
-            <p>the day card was posted</p>
-        </div>
-        <div>
-            <h2>This is the card Header</h2>
-            <h4>this is card body. its considered big if i say so myself</h4>
-            <p>the day card was posted</p>
-        </div>
-        <div>
-            <h2>This is the card Header</h2>
-            <h4>this is card body. its considered big if i say so myself</h4>
-            <p>the day card was posted</p>
-        </div>
-        <div>
-            <h2>This is the card Header</h2>
-            <h4>this is card body. its considered big if i say so myself</h4>
-            <p>the day card was posted</p>
-        </div>
-        <div>
-            <h2>This is the card Header</h2>
-            <h4>this is card body. its considered big if i say so myself</h4>
-            <p>the day card was posted</p>
-        </div>
+        <section class="blogs">
+            <div>
+                <h2>This is the card Header</h2>
+                <h4>this is card body. its considered big if i say so myself</h4>
+                <p>the day card was posted</p>
+            </div>
+            <div>
+                <h2>This is the card Header</h2>
+                <h4>this is card body. its considered big if i say so myself</h4>
+                <p>the day card was posted</p>
+            </div>
+            <div>
+                <h2>This is the card Header</h2>
+                <h4>this is card body. its considered big if i say so myself</h4>
+                <p>the day card was posted</p>
+            </div>
+            <div>
+                <h2>This is the card Header</h2>
+                <h4>this is card body. its considered big if i say so myself</h4>
+                <p>the day card was posted</p>
+            </div>
+            <div>
+                <h2>This is the card Header</h2>
+                <h4>this is card body. its considered big if i say so myself</h4>
+                <p>the day card was posted</p>
+            </div>
+            <div>
+                <h2>This is the card Header</h2>
+                <h4>this is card body. its considered big if i say so myself</h4>
+                <p>the day card was posted</p>
+            </div>
+            <div>
+                <h2>This is the card Header</h2>
+                <h4>this is card body. its considered big if i say so myself</h4>
+                <p>the day card was posted</p>
+            </div>
+            <div>
+                <h2>This is the card Header</h2>
+                <h4>this is card body. its considered big if i say so myself</h4>
+                <p>the day card was posted</p>
+            </div>
+        </section>
+        <section class="side_content">
+            <h1>this is the side section</h1>
+        </section>
     </main>
 </body>
 </html>
