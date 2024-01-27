@@ -13,6 +13,12 @@
             margin: 0;
             padding: 0;
         }
+        
+        a {
+            text-decoration: none;
+            color: inherit; /* Set to the desired color, 'inherit' retains the default color */
+        }
+
         nav {
             width: 100%;
             display: flex;
@@ -109,8 +115,10 @@
             border-radius: 1em 0em;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
+    <%- include('partials/toast') %>
     <nav>
         <div>
             <img src="" alt="Website Logo">
@@ -130,50 +138,43 @@
     <h1>Think Hard to work</h1>
     <main>
         <section class="blogs">
-            <div>
-                <h2>This is the card Header</h2>
-                <h4>this is card body. its considered big if i say so myself</h4>
-                <p>the day card was posted</p>
-            </div>
-            <div>
-                <h2>This is the card Header</h2>
-                <h4>this is card body. its considered big if i say so myself</h4>
-                <p>the day card was posted</p>
-            </div>
-            <div>
-                <h2>This is the card Header</h2>
-                <h4>this is card body. its considered big if i say so myself</h4>
-                <p>the day card was posted</p>
-            </div>
-            <div>
-                <h2>This is the card Header</h2>
-                <h4>this is card body. its considered big if i say so myself</h4>
-                <p>the day card was posted</p>
-            </div>
-            <div>
-                <h2>This is the card Header</h2>
-                <h4>this is card body. its considered big if i say so myself</h4>
-                <p>the day card was posted</p>
-            </div>
-            <div>
-                <h2>This is the card Header</h2>
-                <h4>this is card body. its considered big if i say so myself</h4>
-                <p>the day card was posted</p>
-            </div>
-            <div>
-                <h2>This is the card Header</h2>
-                <h4>this is card body. its considered big if i say so myself</h4>
-                <p>the day card was posted</p>
-            </div>
-            <div>
-                <h2>This is the card Header</h2>
-                <h4>this is card body. its considered big if i say so myself</h4>
-                <p>the day card was posted</p>
-            </div>
         </section>
         <section class="side_content">
             <h1>this is the side section</h1>
         </section>
     </main>
 </body>
+    <script>
+        function createCard (blog) {
+            let title = document.createElement("h2");
+            title.textContent = blog.title
+            
+            let body = document.createElement("h4");
+            body.textContent = blog.body
+
+            let date = document.createElement("p");
+            date.textContent = blog.dateUploaded
+
+            let anchor = document.createElement('a')
+            anchor.setAttribute("href","/blogs/"+blog.blogId)
+            anchor.append(title)
+            anchor.append(body)
+            anchor.append(date)
+
+            let card = document.createElement("div")
+            card.append(anchor);
+
+            return card;
+        }
+        document.addEventListener("DOMContentLoaded",async () => {
+            await axios.get("/blogs")
+            .then(response => response.data)
+            .then(blogs => {
+                blogs.forEach(blog => {
+                    document.querySelector(".blogs").append(createCard(blog))
+                });
+            })
+            .catch(err => showAlert("Some error occured while loading the blogs","danger"))
+        })
+    </script>
 </html>

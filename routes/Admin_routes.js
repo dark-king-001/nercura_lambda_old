@@ -10,7 +10,7 @@ router.get('/admin/dashboard', (req, res) => {
 
 // Create a new blog
 // done
-router.post('/admin/blogs', async (req, res) => {
+router.post('/admin/blogs/', async (req, res) => {
     try {
         const blog = new Blog(req.body);
         await blog.save();
@@ -21,16 +21,29 @@ router.post('/admin/blogs', async (req, res) => {
 });
 
 // Get all blogs
-// router.get('/blogs', async (req, res) => {
-//     try {
-//         const blogs = await Blog.find();
-//         res.send(blogs);
-//     } catch (error) {
-//         res.status(500).send(error);
-//     }
-// });
+//done
+router.get('/blogs', async (req, res) => {
+    try {
+        function limitwords (string) {
+            let newString = string.split(" ").slice(0, 15).join(" ")
+            if (string.length > 100) {
+                newString += " ...";
+            }
+            return newString
+        }
+        let blogs = await Blog.find().limit(8);
+        blogs.forEach(blog => {
+            blog.title = limitwords(blog.title)
+            blog.body = limitwords(blog.body)
+        })
+        res.send(blogs);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
 
 // Get blog by ID
+// done
 router.get('/blogs/:blogId', async (req, res) => {
     const blogId = req.params.blogId;
     try {
