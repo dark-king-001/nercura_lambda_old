@@ -54,6 +54,10 @@ app.use(express.urlencoded({ extended: true }));
 const pages = require('./routes/page_routes')
 app.use(pages)
 
+// page routes
+const admin = require('./routes/Admin_routes')
+app.use(admin)
+
 app.get('*', (req,res) => {
   res.render('Error404')
 })
