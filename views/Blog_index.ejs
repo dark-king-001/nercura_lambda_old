@@ -6,6 +6,10 @@
     <title>Blog | this is a blog template</title>
 </head>
 <body>
-    this is a blog template
+    <h1><%= blog.title %></h1>
+    <p><%= blog.body %></p>
 </body>
+<script>
+    console.log("<%= blog.title %>")
+</script>
 </html>

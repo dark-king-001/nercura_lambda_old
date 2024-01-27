@@ -1,18 +1,17 @@
 <div id="alertContainer"></div>
 <style>
-    @keyframes growBorder {
+    @keyframes moveRightToLeft {
         from {
-            width: 0;
+            right: -8rem;
         }
         to {
-            width: 1rem;
+            right: 5rem;
         }
     }
 
     .alert {
         position: fixed;
         top: 1rem;
-        left: 50%;
         z-index: 1;
         padding: 0.75rem 1.25rem;
         margin-bottom: 1rem;
@@ -21,7 +20,7 @@
 
         transition: 0.3s ease-in-out;
 
-        animation: growBorder 4s ease-in;
+        animation: moveRightToLeft 4s ease-in;
         /* Define the animation */
     }
 

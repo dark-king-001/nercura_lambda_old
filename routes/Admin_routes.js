@@ -9,25 +9,26 @@ router.get('/admin/dashboard', (req, res) => {
 })
 
 // Create a new blog
-router.post('/blogs', async (req, res) => {
+// done
+router.post('/admin/blogs', async (req, res) => {
     try {
         const blog = new Blog(req.body);
         await blog.save();
-        res.status(201).send(blog);
+        res.status(201).send({message : "blog added successfully"});
     } catch (error) {
         res.status(400).send(error);
     }
 });
 
 // Get all blogs
-router.get('/blogs', async (req, res) => {
-    try {
-        const blogs = await Blog.find();
-        res.send(blogs);
-    } catch (error) {
-        res.status(500).send(error);
-    }
-});
+// router.get('/blogs', async (req, res) => {
+//     try {
+//         const blogs = await Blog.find();
+//         res.send(blogs);
+//     } catch (error) {
+//         res.status(500).send(error);
+//     }
+// });
 
 // Get blog by ID
 router.get('/blogs/:blogId', async (req, res) => {
@@ -37,7 +38,7 @@ router.get('/blogs/:blogId', async (req, res) => {
         if (!blog) {
             return res.status(404).send({ error: 'Blog not found' });
         }
-        res.send(blog);
+        res.render("Blog_index",{blog});
     } catch (error) {
         res.status(500).send(error);
     }

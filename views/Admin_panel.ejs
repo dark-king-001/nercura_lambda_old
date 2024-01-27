@@ -43,7 +43,7 @@
         <input type="button" value="Add New Blog" onclick="changeTab('newBlog')">
     </header>
     <main>
-        <div class="dashboard" style="display: none;">this is the dashboard</div>
+        <div class="dashboard" style="display: none;"><h1>this is the dashboard</h1></div>
         <div class="newBlog" >
             <style>
                 .blogTemplate {
@@ -81,11 +81,17 @@
                 async function addNewBlog () {
                     const title = document.querySelector("#blogTitle").value 
                     const body = document.querySelector("#blogBody").value
-                    const editors = document.querySelector("#editors").value
-                    const tags = document.querySelector("#blogTags").value
-                    const links = document.querySelector("#blogLinks").value
-
-                    showAlert("uploading Blog","success")
+                    const editors = document.querySelector("#editors").value.split(",")
+                    const tags = document.querySelector("#blogTags").value.split(",")
+                    const relativeLinks = document.querySelector("#blogLinks").value.split(",")
+                    const blogId = title.replace(/[#-.]|[[-^]|[?|{}]\s+/g, '-').replace(/\s+/g, '+');
+                    if (title && body){
+                        await axios.post("/admin/blogs", {blogId, title, body, editors, tags, relativeLinks})
+                        .then(response => showAlert(response.data.message,"success"))
+                        .catch(err => showAlert("Some Error Occured while posting the blog","danger"))
+                    } else {
+                        showAlert("Please Add Title and body","success")
+                    }
                 }
             </script>
         </div>

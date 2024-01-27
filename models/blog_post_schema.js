@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const blogSchema = new mongoose.Schema({
-    blogId: {type:String , required: true},
-    title: {type: String, required:true},
-    body: {type: String, required:true},
-    editors: {type: String, requred: true},
+    blogId: {type:String},
+    title: {type: String},
+    body: {type: String},
+    editors: [{type: String}],
     tags: [{ type:String }],
     relativeLinks: [{type: String}],
     imageLinks: [{type: String}],
