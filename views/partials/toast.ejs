@@ -1,0 +1,59 @@
+<div id="alertContainer"></div>
+<style>
+    @keyframes growBorder {
+        from {
+            width: 0;
+        }
+        to {
+            width: 1rem;
+        }
+    }
+
+    .alert {
+        position: fixed;
+        top: 1rem;
+        left: 50%;
+        z-index: 1;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+
+        transition: 0.3s ease-in-out;
+
+        animation: growBorder 4s ease-in;
+        /* Define the animation */
+    }
+
+    .alert.success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert.danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+</style>
+<script>
+    function showAlert(message, type) {
+        const alertContainer = document.getElementById("alertContainer");
+
+        const alert = document.createElement("div");
+        alert.className = `alert ${type}`;
+        alert.innerHTML = `${message}<span class="close" onclick="closeAlert(this)">×</span>`;
+
+        alertContainer.appendChild(alert);
+
+        setTimeout(() => {
+            closeAlert(alert.querySelector(".close"));
+        }, 4000);
+    }
+
+    function closeAlert(closeButton) {
+        const alert = closeButton.parentElement;
+        alert.style.display = "none";
+    }
+</script>

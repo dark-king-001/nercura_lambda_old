@@ -4,7 +4,7 @@ const router = express.Router();
 const Blog = require("../models/blog_post_schema");
 
 // home
-router.get('/admin_panel', (req, res) => {
+router.get('/admin/dashboard', (req, res) => {
     res.render('Admin_panel')
 })
 

@@ -6,8 +6,8 @@ const blogSchema = new mongoose.Schema({
     body: {type: String, required:true},
     editors: {type: String, requred: true},
     tags: [{ type:String }],
-    imageLinks: [{type: String}],
     relativeLinks: [{type: String}],
+    imageLinks: [{type: String}],
     dateUploaded: {type: Date, default:Date.now()},
 });
 

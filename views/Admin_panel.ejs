@@ -33,20 +33,66 @@
             border-left: solid 1px;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
+    <%- include('partials/toast') %>
     <header>
         <img src="" alt="Image">
         <input type="button" value="DashBoard" onclick="changeTab('dashboard')">
         <input type="button" value="Add New Blog" onclick="changeTab('newBlog')">
     </header>
     <main>
-        <div class="dashboard">this is the dashboard</div>
-        <div class="newBlog" style="display: none;">Add new blog from here</div>
+        <div class="dashboard" style="display: none;">this is the dashboard</div>
+        <div class="newBlog" >
+            <style>
+                .blogTemplate {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                }
+                .blogTemplate > div {
+                    display: flex;
+                    flex-direction: column;
+                }
+            </style>
+            <div class="blogTemplate">
+                <div>
+                    <h1>newBlog</h1>
+                    <label for="blogTitle">Blog Title</label>
+                    <input type="text" name="blogTitle" id="blogTitle">
+                    <label for="blogBody">Blog body</label>
+                    <textarea name="blogBody" id="blogBody" cols="50" rows="50"></textarea>
+                </div>
+                <div style="padding: 1em; margin: 1em;">
+                    <h1>Metadata for Blog</h1>
+                    <h2>Editors</h2>
+                    <input type="text" name="editors" id="editors">
+                    <h2>Tags</h2>
+                    <input type="text" name="blogTags" id="blogTags">
+                    <h2>Relative links</h2>
+                    <textarea name="blogLinks" id="blogLinks" cols="30" rows="10"></textarea>
+                    <h2>Image links</h2>
+                    <input type="file" name="image" id="image">  
+                    <input type="submit" value="add Blog" style="margin-top: 1em;" onclick="addNewBlog()">
+                </div>
+            </div>
+            <script>
+                async function addNewBlog () {
+                    const title = document.querySelector("#blogTitle").value 
+                    const body = document.querySelector("#blogBody").value
+                    const editors = document.querySelector("#editors").value
+                    const tags = document.querySelector("#blogTags").value
+                    const links = document.querySelector("#blogLinks").value
+
+                    showAlert("uploading Blog","success")
+                }
+            </script>
+        </div>
     </main>
 </body>
     <script>
-        let loadedTab = "dashboard";
+        let loadedTab = "newBlog";
         function changeTab(tab) {
             document.querySelector("."+loadedTab).style.display = "none";
             loadedTab = tab;
