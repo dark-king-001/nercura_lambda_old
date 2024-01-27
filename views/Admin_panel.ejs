@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+
+            margin: 0;
+            padding: 0;
+        }
+        body > header {
+            display: flex;
+            flex-direction: column;
+        }
+        body > header > input {
+            border: none;
+            padding: 2em 5em;
+
+            color: black;
+            background-color: beige;
+        }
+        body > header > input:hover {
+            color: black;
+            background-color: white;
+        }
+        body > main {
+            padding: 1em 0 0 2em;
+
+            border-left: solid 1px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="" alt="Image">
+        <input type="button" value="DashBoard" onclick="changeTab('dashboard')">
+        <input type="button" value="Add New Blog" onclick="changeTab('newBlog')">
+    </header>
+    <main>
+        <div class="dashboard">this is the dashboard</div>
+        <div class="newBlog" style="display: none;">Add new blog from here</div>
+    </main>
+</body>
+    <script>
+        let loadedTab = "dashboard";
+        function changeTab(tab) {
+            document.querySelector("."+loadedTab).style.display = "none";
+            loadedTab = tab;
+            document.querySelector("."+loadedTab).style.display = "block";
+        }
+    </script>
+</html>
