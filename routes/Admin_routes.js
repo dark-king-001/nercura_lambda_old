@@ -9,12 +9,13 @@ router.get('/admin/dashboard', (req, res) => {
 })
 
 // Create a new blog
-router.post('/blogs', async (req, res) => {
+router.post('/admin/blogs', async (req, res) => {
     try {
         const blog = new Blog(req.body);
         await blog.save();
         res.status(201).send(blog);
     } catch (error) {
+        console.log(error)
         res.status(400).send(error);
     }
 });
@@ -33,11 +34,12 @@ router.get('/blogs', async (req, res) => {
 router.get('/blogs/:blogId', async (req, res) => {
     const blogId = req.params.blogId;
     try {
+        
         const blog = await Blog.findOne({ blogId });
         if (!blog) {
             return res.status(404).send({ error: 'Blog not found' });
         }
-        res.send(blog);
+        res.render("Blog_index", { blog});
     } catch (error) {
         res.status(500).send(error);
     }

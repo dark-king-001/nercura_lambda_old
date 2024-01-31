@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const MongoStore = require('connect-mongo');
 const env = require('dotenv');
 const path = require('path');
+const bodyParser = require("body-parser")
 
 env.config()
 const port = process.env.PORT || 3000
@@ -38,6 +39,8 @@ app.use(morgan(csvFormat, { stream: logStream }));
 // using views dorectory to load views
 app.set('views', path.join(__dirname, 'views'));
 // using view engine
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 // using assets folder
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
